@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Add Student</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/add-students-form">Add multiple students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-gpa">Search by GPA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-firstname">Search by First Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List Students</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Add Student</h1>
+<form action="/add" method="post" >
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required><br>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" name="gender" required><br>
+
+    <label for="gpa">GPA:</label>
+    <input type="text" id="gpa" name="gpa" required><br>
+
+    <label for="level">Level:</label>
+    <input type="text" id="level" name="level" required><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br>
+
+    <button type="submit">Add Student</button>
+</form>
+
+</body>
+</html>
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Add Student</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/add-students-form">Add multiple students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-gpa">Search by GPA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-firstname">Search by First Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List Students</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Add Students</h1>
+
+<form action="/add-students" method="post" th:object="${student}">
+    <label for="numStudents">Number of Students:</label>
+    <input type="number" id="numStudents" name="numStudents" th:field="*{numStudents}" required min="1"><br>
+
+    <button type="submit">Next</button>
+</form>
+
+<th:block th:if="${numStudents > 0}">
+    <form action="/save-students" method="post" th:object="${numStudents}">
+        <div th:each="i : ${#numbers.sequence(1, numStudents)}">
+            <h3 th:text="'Student ' + ${i}"></h3>
+
+            <label th:for="'id' + ${i}">ID:</label>
+            <label>
+                <input type="text" th:id="'id' + ${i}" th:name="'students[' + ${i - 1} + '].id'" required>
+            </label><br>
+
+            <label th:for="'firstName' + ${i}">First Name:</label>
+            <label>
+                <input type="text" th:id="'firstName' + ${i}" th:name="'students[' + ${i - 1} + '].firstName'" required>
+            </label><br>
+
+            <label th:for="'lastName' + ${i}">Last Name:</label>
+            <label>
+                <input type="text" th:id="'lastName' + ${i}" th:name="'students[' + ${i - 1} + '].lastName'" required>
+            </label><br>
+
+            <label th:for="'gender' + ${i}">Gender:</label>
+            <label>
+                <input type="text" th:id="'gender' + ${i}" th:name="'students[' + ${i - 1} + '].gender'" required>
+            </label><br>
+
+            <label th:for="'gpa' + ${i}">GPA:</label>
+            <label>
+                <input type="text" th:id="'gpa' + ${i}" th:name="'students[' + ${i - 1} + '].gpa'" required>
+            </label><br>
+
+            <label th:for="'level' + ${i}">Level:</label>
+            <label>
+                <input type="text" th:id="'level' + ${i}" th:name="'students[' + ${i - 1} + '].level'" required>
+            </label><br>
+
+            <label th:for="'address' + ${i}">Address:</label>
+            <label>
+                <input type="text" th:id="'address' + ${i}" th:name="'students[' + ${i - 1} + '].address'" required>
+            </label><br>
+
+
+        </div>
+        <button type="submit">Add Students</button>
+
+        <button type="reset">reset</button>
+    </form>
+</th:block>
+
+</body>
+</html>
