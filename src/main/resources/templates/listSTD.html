@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Add Student</a>
+    <a class="navbar-brand" href="/">Home Page</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,12 +27,41 @@
                 <a class="nav-link" href="/search-by-firstname">Search by First Name</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/search"
+                >Search by Any Attribute</a
+                >
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/list">List Students</a>
             </li>
         </ul>
     </div>
 </nav>
 <h1>Student List</h1>
+<form action="/list" method="get">
+    <div class="form-group ">
+        <label for="sortAttribute">Sort By:</label>
+        <select class="form-control" id="sortAttribute" name="sort">
+            <option value="id">ID</option>
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="gender">Gender</option>
+            <option value="gpa">GPA</option>
+            <option value="level">Level</option>
+            <option value="address">Address</option>
+        </select>
+    </div>
+    <div class="form-group ">
+        <label for="sortOrder">Sort Order:</label>
+        <select class="form-control" id="sortOrder" name="order">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+    <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-primary">Sort</button>
+    </div>
+</form>
 <table>
     <thead>
     <tr>
@@ -55,12 +84,8 @@
         <td th:text="${student.level}"></td>
         <td th:text="${student.address}"></td>
         <td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+        <td><a th:href="@{/update/{id}(id=${student.id})}">Update</a></td>
 
-<!--        <td>-->
-<!--            <button type="button" class="btn btn-outline-danger"-->
-<!--                    onclick="confirmDelete('${student.id}')">Delete-->
-<!--            </button>-->
-<!--        </td>-->
     </tr>
     </tbody>
 </table>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Students by any attributes</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home Page</a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/add-students-form"
+                >Add multiple students</a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-gpa">Search by GPA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-firstname"
+                >Search by First Name</a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search"
+                >Search by Any Attribute</a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List Students</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- New search form in the navbar -->
+
+</nav>
+
+<h2>Search students by Any Attribute</h2>
+<form action="/search" method="get">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="searchField">Search By:</label>
+            <select class="form-control" id="searchField" name="field">
+                <option value="id">ID</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="gender">Gender</option>
+                <option value="gpa">GPA</option>
+                <option value="level">Level</option>
+                <option value="address">Address</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="query">Search:</label>
+            <input type="text" class="form-control" id="query" name="query" />
+        </div>
+        <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+<div th:if="${students}">
+    <h3 th:text="'Number of found students: ' + ${students.size()}"></h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>GPA</th>
+            <th>Level</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.gpa}"></td>
+            <td th:text="${student.level}"></td>
+            <td th:text="${student.address}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

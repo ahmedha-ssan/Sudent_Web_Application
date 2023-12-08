@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPDATE STD</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Home Page</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/add-students-form">Add multiple students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search-by-gpa">Search by GPA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search-by-firstname">Search by First Name</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search"
+        >Search by Any Attribute</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/list">List Students</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<h2>Update Student Details</h2>
+
+<form th:object="${existingStudent}" method="post">
+  <form th:action="@{/update/*{id}}">
+  <input type="hidden" th:field="*{id}"/>
+
+    </div>
+  <label th:for="firstName">First Name:</label>
+  <label>
+    <input type="text" th:id="firstName" th:name="firstName" th:field="*{firstName}" required>
+  </label><br>
+
+
+  <label th:for="lastName">Last Name:</label>
+  <label>
+    <input type="text" th:id="lastName" th:name="lastName" th:field="*{lastName}" required>
+  </label><br>
+
+  <label th:for="gender">Gender:</label>
+  <label>
+    <input type="text" th:id="gender" th:name="gender" th:field="*{gender}" required>
+  </label><br>
+
+  <label th:for="gpa">GPA:</label>
+  <label>
+    <input type="text" th:id="gpa" th:name="gpa" th:field="*{gpa}" required>
+  </label><br>
+
+  <label th:for="level">Level:</label>
+  <label>
+    <input type="text" th:id="level" th:name="level" th:field="*{level}" required>
+  </label><br>
+
+  <label th:for="address">Address:</label>
+  <label>
+    <input type="text" th:id="address" th:name="address" th:field="*{address}" required>
+  </label><br>
+  <button type="submit">Update</button>
+</form>
+</form>
+
+<br/>
+<a th:href="@{/list}">Back to Student List</a>
+
+</body>
+</html>
